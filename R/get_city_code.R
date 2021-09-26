@@ -18,7 +18,7 @@ get_city_code <- function(city_name) {
 
 
 
-#' export
+
 get_city_codes <- function(city_names) {
 
   #get city codes for multiple cities in api-format: city1,city2,...

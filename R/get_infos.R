@@ -1,4 +1,14 @@
-
+#' Request data from Kolade.se
+#'
+#' Request KPI data from Kolada.se for multiple cities and years
+#'
+#' @return Dataframe that contains the requested KPI data
+#'
+#' @examples
+#' get_infos(kpis = c("N02904", "U28116"), cities = c("Helsingborg", "Askersund"), years = c(2019, 2013))
+#'
+#' @export
+#'
 get_infos <- function(kpis, cities, years) {
 
 
@@ -41,12 +51,9 @@ get_infos <- function(kpis, cities, years) {
                "/year/", years_string, sep = "")
 
   request <- GET(url=request_url)
-  request <- fromJSON(rawToChar(request$content))
+  request <- fromJSON(rawToChar(request$content))$values
 
-  return(request)
+  request_unnested <- unnest(request, cols = "values")
+
+  return(request_unnested)
 }
-
-
-
-answer <- get_infos(kpis = c("N02904", "U28116"), cities = c("Helsingborg", "Askersund"), years = c(2019, 2013))$values
-answer_unnest <- unnest(answer, cols = "values")
