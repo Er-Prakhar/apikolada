@@ -6,6 +6,13 @@
 \usage{
 get_infos(kpis, cities, years)
 }
+\arguments{
+\item{kpis}{Vector of requested KPIs (string format)}
+
+\item{cities}{Vector of requested cities (string format}
+
+\item{years}{Vector of requested years (numbers)}
+}
 \value{
 Dataframe that contains the requested KPI data
 }

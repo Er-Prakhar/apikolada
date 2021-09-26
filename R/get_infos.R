@@ -2,6 +2,10 @@
 #'
 #' Request KPI data from Kolada.se for multiple cities and years
 #'
+#' @param kpis Vector of requested KPIs (string format)
+#' @param cities Vector of requested cities (string format
+#' @param years Vector of requested years (numbers)
+#'
 #' @return Dataframe that contains the requested KPI data
 #'
 #' @examples
