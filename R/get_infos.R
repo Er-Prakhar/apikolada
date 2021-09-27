@@ -57,6 +57,10 @@ get_infos <- function(kpis, cities, years) {
   request <- GET(url=request_url)
   request <- fromJSON(rawToChar(request$content))$values
 
+  if (is.list(request)) {
+    stop("No data available for chosen KPI/city/period. Change input.")
+  }
+
   request_unnested <- unnest(request, cols = "values")
 
   return(request_unnested)
