@@ -11,7 +11,7 @@ get_city_code <- function(city_name) {
     stop("Entered city is not a valid city name.")
   }
 
-  city_value <- city_response$value[[1]]
+  city_value <- city_response$values$id[which(city_response$values$title == city_name)]
 
   return(city_value)
 }
