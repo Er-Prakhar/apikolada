@@ -1,0 +1,49 @@
+---
+title: "Apikolada - Request data from kolada.se"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{kolada_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Setup
+```{r setup}
+library(apikolada)
+```
+
+# Usage
+
+This package provides infrastructure to request data from the kolada.se API in order to get informatioin about different KPIs from different periods and cities in Sweden. 
+
+* get_all_kpis(): function that returns an overview of all the possible KPIs that can be requested
+* get_all_cities(): function that returns an overview of all the possible cities that can be requested
+* get_infos(): function that is used to request the data from the API, all three parameters kpis, cities and years are vectors that have to be specified
+
+# Example query
+
+In the following, an example query is shown, which requests the following information:
+
+* **KPIs**: 
+    1. N02904 - *Invånare 0-19 år i ekonomiskt utsatta hushåll, andel (%) *
+    2. U28116 - *Enheterna har individuellt utformade mål i genomförandeplanen för de boende* 
+* **Cities**: Helsingborg, Askersund
+* **Years**: 2017, 2018, 2019
+  
+```{r}
+# import the package
+library(apikolada)
+
+get_infos(kpis = c("N02904", "U28116"), 
+          cities = c("Göteborg", "Malmö"), 
+          years = c(2017,2018,2019))
+
+
+```
